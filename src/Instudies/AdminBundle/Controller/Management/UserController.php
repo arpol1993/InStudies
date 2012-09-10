@@ -63,7 +63,7 @@ class UserController extends Controller
             $user = $userRepository->findOneByEmail($email);
         }
 
-        if (!$user instanceof \Instudies\SiteBundle\Entity\User) {
+        if (!isset($user) || !$user instanceof \Instudies\SiteBundle\Entity\User) {
             throw $this->createNotFoundException('Такого пользователя не существует');
         }
         
