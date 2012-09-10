@@ -1,0 +1,18 @@
+{% extends 'InstudiesAdminBundle:Shared:base.html.twig' %}
+
+{% block menu_statistics_attr %}class = "active"{% endblock %}
+
+{% block submenu %}
+    <div class="subnav subnav-fixed">
+        <ul class="nav nav-pills statistics">
+                <li {%block submenu_statistics_userActivities_attr%}{%endblock%}>
+                    <a href="#">Активность пользователей</a></li>
+                <li {%block submenu_statistics_groupActivities_attr%}{%endblock%}>
+                    <a href="#">Активность групп</a></li>
+                <li {%block submenu_statistics_activeUsers_attr%}{%endblock%}>
+                    <a href="#">Активные пользователи</a></li>
+                <li {%block submenu_statistics_counters_attr%}{%endblock%}>
+                    <a href="{{path('admin_statistics_counters')}}">Счетчики</a></li>
+        </ul>
+    </div>
+{% endblock %}

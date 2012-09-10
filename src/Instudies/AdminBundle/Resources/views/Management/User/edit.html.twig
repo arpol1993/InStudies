@@ -1,0 +1,67 @@
+{% set title = 'Редактирование пользователя ' ~ user.fullname %}
+
+{% extends 'InstudiesAdminBundle:Management:management.html.twig' %}
+
+{% block submenu_management_userControl_attr %}class = "active"{% endblock %}
+
+{% block content %}
+
+	<div id="manage-user">
+
+		<header class="page-header">
+                    <h2>{{ title }}</h2>                        
+		</header>
+
+		<form action="{{ path('admin_management_user_save', {'id': id}) }}" 
+                      class="well" method="post" {{ form_enctype(editForm) }} class="user-search">
+			<fieldset>
+                            {{ form_errors(editForm, {'attr': {'class': 'text-error'}}) }}
+
+                            <div>
+                                {{ form_label(editForm.firstname) }}                                
+                                {{ form_errors(editForm.firstname) }}
+                                {{ form_widget(editForm.firstname, {'attr': {'class': 'span4'}}) }}                                
+                            </div>
+
+                            <div>
+                                {{ form_label(editForm.lastname) }}
+                                {{ form_errors(editForm.lastname) }}
+                                {{ form_widget(editForm.lastname, {'attr': {'class': 'span4'}}) }}	                                    
+                            </div>
+
+                            <div>
+                                {{ form_label(editForm.email) }}
+                                {{ form_errors(editForm.email) }}
+                                {{ form_widget(editForm.email, {'attr': {'class': 'span4'}}) }}	                                    
+                            </div>
+
+                            <div>
+                                {{ form_label(editForm.emailActivated) }}
+                                {{ form_errors(editForm.emailActivated) }}
+                                {{ form_widget(editForm.emailActivated) }}	                                    
+                            </div>
+
+                            <div>
+                                {{ form_label(editForm.filledAllInformation) }}
+                                {{ form_errors(editForm.filledAllInformation) }}
+                                {{ form_widget(editForm.filledAllInformation) }}	                                    
+                            </div>
+
+                            <div>
+                                {{ form_label(editForm.password) }}
+                                {{ form_errors(editForm.password) }}
+                                {{ form_widget(editForm.password, {'attr': {'class': 'span4'}}) }}	                                    
+                            </div>          
+                          
+                            {{form_rest(editForm)}}
+                            
+                            <button class="btn btn-success">Сохранить</button>
+                            <button class="btn btn-danger" formaction="{{ path('admin_management_user_delete', 
+                                                {'id': id, 'name': user.fullname}) }}">
+                                Удалить</button>                            
+			</fieldset>
+		</form>
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'InstudiesAdminBundle:Shared:base.html.twig' %}
+
+{% block menu_management_attr %}class = "active"{% endblock %}
+
+{% block submenu %}
+    <div class="subnav subnav-fixed">
+        <ul class="nav nav-pills admin">
+            <li {% block submenu_management_userControl_attr %}{% endblock %}>
+                <a href="{{ path('admin_management_user') }}">Управление пользователями</a></li>
+        </ul>
+    </div>
+{% endblock %}

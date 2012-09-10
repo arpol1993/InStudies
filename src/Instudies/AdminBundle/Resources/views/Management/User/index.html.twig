@@ -1,0 +1,27 @@
+{% set title = 'Управление пользователями' %}
+
+{% extends 'InstudiesAdminBundle:Management:management.html.twig' %}
+
+{% block submenu_management_userControl_attr %}class = "active"{% endblock %}
+
+{% block content %}
+	<div id="manage-user">
+		<header class="page-header">
+			<h2>{{ title }}</h2>
+                        {% for key, flash in app.session.getFlashes() %}
+                        <h5>
+                            <div> {{ flash }} </div>
+                        </h5>
+                        {% endfor %}
+		</header>
+
+	    <form action="{{ path('admin_management_user') }}" class="well" method="post" {{ form_enctype(findForm) }} class="user-search">
+			<fieldset>
+	        {{ form_widget(findForm) }}
+            <button class="btn btn-success" type="submit">найти</button>
+		    </fieldset>
+	    </form>
+
+	</div>
+
+{% endblock %}
